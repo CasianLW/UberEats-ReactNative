@@ -1,8 +1,8 @@
-import React from 'react';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
-import CategoriesSectionComponent from './components/homepage/CategoriesSectionComponent.tsx';
-import OffersSectionComponent from './components/homepage/OffersSectionComponent.tsx';
-import ListeCategoriesProduitsComponent from './components/homepage/ListeCategoriesProduitsComponent.tsx';
+import React from "react";
+import { View, Text, ScrollView, StyleSheet } from "react-native";
+import CategoriesSectionComponent from "../components/CategoriesSectionComponent";
+import OffersSectionComponent from "../components/OffersSectionComponent";
+import ListeCategoriesProduitsComponent from "../components/ListeCategorieProduitsComponent";
 
 const HomepageComponent: React.FC = () => {
   return (
@@ -25,7 +25,7 @@ const HomepageComponent: React.FC = () => {
   );
 };
 
-export default Home;
+export default HomepageComponent;
 
 const styles = StyleSheet.create({
   container: {
@@ -33,18 +33,18 @@ const styles = StyleSheet.create({
   },
   main: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    alignItems: "center",
+    justifyContent: "space-between",
     paddingVertical: 24,
     paddingHorizontal: 12,
   },
   contentGrid: {
-    flexDirection: 'row',
-    width: '100%',
+    flexDirection: "row",
+    width: "100%",
   },
   filterColumn: {
     flex: 3,
-    backgroundColor: '#e2e2e2', // gray color
+    backgroundColor: "#e2e2e2", // gray color
   },
   productsColumn: {
     flex: 9,
