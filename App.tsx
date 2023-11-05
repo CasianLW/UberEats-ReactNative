@@ -5,8 +5,8 @@
  * @format
  */
 
-import React from 'react';
-import type {PropsWithChildren} from 'react';
+import React from "react";
+import type { PropsWithChildren } from "react";
 import {
   SafeAreaView,
   ScrollView,
@@ -15,7 +15,7 @@ import {
   Text,
   useColorScheme,
   View,
-} from 'react-native';
+} from "react-native";
 
 import {
   Colors,
@@ -23,12 +23,14 @@ import {
   Header,
   LearnMoreLinks,
   ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import LoginComponent from './components/loginComponent';
+} from "react-native/Libraries/NewAppScreen";
+import LoginComponent from "./components/loginComponent";
+import HomepageComponent from "./pages/HomepageComponent";
 
 function App(): JSX.Element {
   return (
-    <LoginComponent />
+    <HomepageComponent />
+    //<LoginComponent />
     /*
    <SafeAreaView style={backgroundStyle}>
       <StatusBar
@@ -71,15 +73,15 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 24,
-    fontWeight: '600',
+    fontWeight: "600",
   },
   sectionDescription: {
     marginTop: 8,
     fontSize: 18,
-    fontWeight: '400',
+    fontWeight: "400",
   },
   highlight: {
-    fontWeight: '700',
+    fontWeight: "700",
   },
 });
 
