@@ -10,10 +10,11 @@ import {
 import offersData from "../content/offersData.json";
 import { limitCharacters } from "../utils/toolbox";
 import { offre1Homepage } from "../assets";
+const imageStyle = StyleSheet.absoluteFillObject;
 
 const OfferComponent: React.FC<{
   text: string;
-  image: any; // Correct type based on your image import
+  image: any;
   buttonText: string;
   link: string;
   hexColor?: string;
@@ -26,11 +27,18 @@ const OfferComponent: React.FC<{
         { backgroundColor: hexColor || "#f9f9f9" },
       ]}
     >
-      <View style={styles.textContainer}>
-        <Text style={styles.text}>{limitCharacters(text, 30)}</Text>
-        <Text style={styles.buttonText}>{buttonText} →</Text>
+      {/* The Image component is positioned absolutely to cover the entire container */}
+      <Image source={imageSource} style={[imageStyle, styles.image]} />
+
+      {/* We added an overlay view to ensure text is visible on top of the image */}
+      <View style={styles.textOverlay}>
+        <View style={styles.textContainer}>
+          <Text style={styles.text}>{limitCharacters(text, 30)}</Text>
+          <View style={styles.buttonBackground}>
+            <Text style={styles.buttonText}>{buttonText} →</Text>
+          </View>
+        </View>
       </View>
-      <Image source={imageSource} style={styles.image} />
     </TouchableOpacity>
   );
 };
@@ -60,6 +68,13 @@ const OffersSectionComponent: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
+  buttonBackground: {
+    backgroundColor: "white",
+    paddingHorizontal: 4,
+    paddingVertical: 4,
+    borderRadius: 20,
+    marginBottom: 8,
+  },
   container: {
     flex: 1,
   },
@@ -68,29 +83,43 @@ const styles = StyleSheet.create({
   },
   offerContainer: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    width: 300, // set this to the width of the viewable area
-    padding: 10,
-    borderRadius: 10,
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+    width: 300,
+    height: 200,
+    borderRadius: 20,
+    overflow: "hidden",
     margin: 10,
   },
   textContainer: {
     flex: 1,
     justifyContent: "space-between",
+    width: "100%",
+    alignSelf: "flex-start", // Aligns self to the content size
   },
   text: {
-    color: "black",
+    color: "white",
     fontWeight: "bold",
+    width: "100%",
+
     fontSize: 16,
+    backgroundColor: "black",
+    paddingTop: 20,
   },
   buttonText: {
+    //marginBottom: 8,
     color: "black",
   },
   image: {
-    width: "100%", // Adjust the width as necessary
-    height: 100, // Adjust the height as necessary
-    resizeMode: "contain",
+    //width: "100%",
+    //height: 100,
+    resizeMode: "cover",
+  },
+  textOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(255, 255, 255, 0.2)",
   },
 });
 
