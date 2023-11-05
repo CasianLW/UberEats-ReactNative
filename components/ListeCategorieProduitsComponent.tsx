@@ -1,6 +1,7 @@
-import React from 'react';
-import { View, Text, Image, ScrollView, StyleSheet } from 'react-native';
-import categoriesProductsData from '@/app/content/categoriesProducts.json';
+import React from "react";
+import { View, Text, Image, ScrollView, StyleSheet } from "react-native";
+//import categoriesProductsData from '@/content/categoriesProducts.json';
+import categoriesProductsData from "../content/categoriesProducts.json";
 
 interface ProductType {
   title: string;
@@ -32,7 +33,10 @@ const ListeCategoriesProduitsComponent: React.FC = () => {
   );
 };
 
-const ProductListComponent: React.FC<CategorieProps> = ({ title, productInfo }) => {
+const ProductListComponent: React.FC<CategorieProps> = ({
+  title,
+  productInfo,
+}) => {
   return (
     <View style={styles.productList}>
       <Text style={styles.title}>{title}</Text>
@@ -64,8 +68,13 @@ const ProductComponent: React.FC<ProductType> = ({
     <View style={styles.product}>
       <Image
         style={styles.image}
-        source={image ?? require('@/app/assets/productListExample.png')} // Image should be required locally or use uri for external
+        source={
+          image
+            ? { uri: image }
+            : require("../assets/homepage/productsList.png")
+        }
       />
+
       <Text style={styles.greenMessage}>{greenMessage}</Text>
       {/* The rest of your component */}
       <View style={styles.ratingContainer}>
@@ -76,9 +85,14 @@ const ProductComponent: React.FC<ProductType> = ({
       </View>
       <View style={styles.deliveryInfo}>
         {uberOne && (
-          <Image style={styles.uberIcon} source={require('@/app/assets/uberOneIcon.png')} />
+          <Image
+            style={styles.uberIcon}
+            source={require("../assets/homepage/uberOne.png")}
+          />
         )}
-        <Text style={styles.deliveryText}>• Frais de Livraison : {fraisDeLivraison}€</Text>
+        <Text style={styles.deliveryText}>
+          • Frais de Livraison : {fraisDeLivraison}€
+        </Text>
       </View>
     </View>
   );
@@ -86,7 +100,7 @@ const ProductComponent: React.FC<ProductType> = ({
 
 const styles = StyleSheet.create({
   listContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
     paddingHorizontal: 16,
   },
   productList: {
@@ -94,44 +108,44 @@ const styles = StyleSheet.create({
   },
   product: {
     marginRight: 16,
-    height: '50%', // fix later
-    backgroundColor: 'red', // fix
+    height: "50%", // fix later
+    backgroundColor: "red", // fix
     borderRadius: 20,
   },
   image: {
-    width: '100%', // fix later
+    width: "100%", // fix later
     height: 100, // fix later
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   greenMessage: {
-    backgroundColor: 'green', // fix
-    color: 'white',
+    backgroundColor: "green", // fix
+    color: "white",
     paddingHorizontal: 8,
     marginVertical: 12,
     borderRadius: 25,
   },
   title: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 14,
   },
   ratingContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginTop: 4,
   },
   ratingBadge: {
-    backgroundColor: 'grey', // fix
+    backgroundColor: "grey", // fix
     borderRadius: 50,
     padding: 4,
-    width: 'fit-content',
-    textAlign: 'center',
+    //width: 'fit-content',
+    textAlign: "center",
     fontSize: 12,
   },
   deliveryInfo: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginTop: 4,
   },
   uberIcon: {
