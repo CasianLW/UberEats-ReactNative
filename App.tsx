@@ -29,9 +29,11 @@ import HomepageComponent from "./pages/HomepageComponent";
 
 function App(): JSX.Element {
   return (
-    <SafeAreaView>
+    // <SafeAreaView>
+    <View style={styles.container}>
       <HomepageComponent />
-    </SafeAreaView>
+    </View>
+    // </SafeAreaView>
     //<LoginComponent />
     /*
    <SafeAreaView style={backgroundStyle}>
@@ -84,6 +86,14 @@ const styles = StyleSheet.create({
   },
   highlight: {
     fontWeight: "700",
+  },
+
+  safeArea: {
+    flex: 1,
+  },
+  container: {
+    flex: 1,
+    marginTop: 10,
   },
 });
 
