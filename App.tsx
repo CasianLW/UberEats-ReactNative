@@ -29,7 +29,9 @@ import HomepageComponent from "./pages/HomepageComponent";
 
 function App(): JSX.Element {
   return (
-    <HomepageComponent />
+    <SafeAreaView>
+      <HomepageComponent />
+    </SafeAreaView>
     //<LoginComponent />
     /*
    <SafeAreaView style={backgroundStyle}>
