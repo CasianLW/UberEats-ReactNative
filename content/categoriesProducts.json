@@ -9,7 +9,11 @@
           "greenMessage": "Livraison à 0€ (à partir de 15€)",
           "uberOne": true,
           "fraisDeLivraison": 0.55,
-          "rating": 4.1
+          "rating": 4.1,
+          "openingHours": {
+            "open": "9:00",
+            "close": "18:00"
+          }
         },
         {
           "title": "Franprix - 16eme",
@@ -17,7 +21,11 @@
           "greenMessage": "Livraison à 0€ (à partir de 15€)",
           "uberOne": true,
           "fraisDeLivraison": 0.55,
-          "rating": 4.1
+          "rating": 4.1,
+          "openingHours": {
+            "open": "18:00",
+            "close": "9:00"
+          }
         },
         {
           "title": "KFC - Auber",
@@ -25,7 +33,11 @@
           "greenMessage": "Livraison à 0€ (à partir de 15€)",
           "uberOne": true,
           "fraisDeLivraison": 0.55,
-          "rating": 4.1
+          "rating": 4.1,
+          "openingHours": {
+            "open": "9:00",
+            "close": "18:00"
+          }
         },
         {
           "title": "Karim Benzema ",
@@ -33,7 +45,11 @@
           "greenMessage": "Livraison à 0€ (à partir de 15€)",
           "uberOne": true,
           "fraisDeLivraison": 0.55,
-          "rating": 4.1
+          "rating": 4.1,
+          "openingHours": {
+            "open": "9:00",
+            "close": "18:00"
+          }
         }
       ]
     },
@@ -46,7 +62,11 @@
           "greenMessage": "Livraison à 0€ (à partir de 15€)",
           "uberOne": true,
           "fraisDeLivraison": 0.55,
-          "rating": 4.1
+          "rating": 4.1,
+          "openingHours": {
+            "open": "9:00",
+            "close": "18:00"
+          }
         },
         {
           "title": "Franprix - 16eme",
@@ -54,7 +74,11 @@
           "greenMessage": "Livraison à 0€ (à partir de 15€)",
           "uberOne": true,
           "fraisDeLivraison": 0.55,
-          "rating": 4.1
+          "rating": 4.1,
+          "openingHours": {
+            "open": "18:00",
+            "close": "9:00"
+          }
         },
         {
           "title": "KFC - Auber",
@@ -62,7 +86,11 @@
           "greenMessage": "Livraison à 0€ (à partir de 15€)",
           "uberOne": true,
           "fraisDeLivraison": 0.55,
-          "rating": 4.1
+          "rating": 4.1,
+          "openingHours": {
+            "open": "9:00",
+            "close": "18:00"
+          }
         },
         {
           "title": "Karim Benzema ",
@@ -70,7 +98,11 @@
           "greenMessage": "Livraison à 0€ (à partir de 15€)",
           "uberOne": true,
           "fraisDeLivraison": 0.55,
-          "rating": 4.1
+          "rating": 4.1,
+          "openingHours": {
+            "open": "9:00",
+            "close": "18:00"
+          }
         }
       ]
     },
@@ -83,7 +115,11 @@
           "greenMessage": "Livraison à 0€ (à partir de 15€)",
           "uberOne": true,
           "fraisDeLivraison": 0.55,
-          "rating": 4.1
+          "rating": 4.1,
+          "openingHours": {
+            "open": "9:00",
+            "close": "18:00"
+          }
         },
         {
           "title": "Franprix - 16eme",
@@ -91,7 +127,11 @@
           "greenMessage": "Livraison à 0€ (à partir de 15€)",
           "uberOne": true,
           "fraisDeLivraison": 0.55,
-          "rating": 4.1
+          "rating": 4.1,
+          "openingHours": {
+            "open": "9:00",
+            "close": "18:00"
+          }
         },
         {
           "title": "KFC - Auber",
@@ -99,7 +139,11 @@
           "greenMessage": "Livraison à 0€ (à partir de 15€)",
           "uberOne": true,
           "fraisDeLivraison": 0.55,
-          "rating": 4.1
+          "rating": 4.1,
+          "openingHours": {
+            "open": "9:00",
+            "close": "18:00"
+          }
         },
         {
           "title": "Karim Benzema ",
@@ -107,7 +151,11 @@
           "greenMessage": "Livraison à 0€ (à partir de 15€)",
           "uberOne": true,
           "fraisDeLivraison": 0.55,
-          "rating": 4.1
+          "rating": 4.1,
+          "openingHours": {
+            "open": "9:00",
+            "close": "18:00"
+          }
         }
       ]
     }

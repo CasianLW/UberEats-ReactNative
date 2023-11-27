@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC, useEffect, useState } from "react";
 import { View, Text, Image, ScrollView, StyleSheet } from "react-native";
 //import categoriesProductsData from '@/content/categoriesProducts.json';
 import categoriesProductsData from "../content/categoriesProducts.json";
@@ -10,6 +10,10 @@ interface ProductType {
   uberOne: boolean;
   fraisDeLivraison: number;
   rating: number;
+  openingHours: {
+    open: string;
+    close: string;
+  };
 }
 
 interface CategorieProps {
@@ -17,9 +21,13 @@ interface CategorieProps {
   productInfo: ProductType[] | undefined;
 }
 
-const ListeCategoriesProduitsComponent: React.FC = () => {
+const ListeCategoriesProduitsComponent: FC = () => {
   return (
-    <ScrollView horizontal={true} style={styles.listContainer}>
+    <ScrollView
+      showsVerticalScrollIndicator
+      horizontal={false}
+      style={styles.listContainer}
+    >
       <ProductListComponent
         title={
           categoriesProductsData.productCategories.recemmentConsultees
@@ -33,39 +41,72 @@ const ListeCategoriesProduitsComponent: React.FC = () => {
   );
 };
 
-const ProductListComponent: React.FC<CategorieProps> = ({
-  title,
-  productInfo,
-}) => {
+const ProductListComponent: FC<CategorieProps> = ({ title, productInfo }) => {
   return (
     <View style={styles.productList}>
       <Text style={styles.title}>{title}</Text>
-      {productInfo &&
-        productInfo.map((product, index) => (
-          <ProductComponent
-            key={index}
-            title={product.title}
-            image={product.image}
-            greenMessage={product.greenMessage}
-            uberOne={product.uberOne}
-            fraisDeLivraison={product.fraisDeLivraison}
-            rating={product.rating}
-          />
-        ))}
+      <ScrollView horizontal={false}>
+        {productInfo &&
+          productInfo.map((product, index) => (
+            <ProductComponent
+              key={index}
+              title={product.title}
+              image={product.image}
+              greenMessage={product.greenMessage}
+              uberOne={product.uberOne}
+              fraisDeLivraison={product.fraisDeLivraison}
+              rating={product.rating}
+              openingHours={product.openingHours}
+            />
+          ))}
+      </ScrollView>
     </View>
   );
 };
 
-const ProductComponent: React.FC<ProductType> = ({
+const ProductComponent: FC<ProductType> = ({
   title,
   image,
   greenMessage,
   uberOne,
   fraisDeLivraison,
   rating,
+  openingHours,
 }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const checkIfOpen = () => {
+    const currentTime = new Date();
+    const currentHours = currentTime.getHours();
+    const currentMinutes = currentTime.getMinutes();
+
+    const [openHours, openMinutes] = openingHours.open.split(":").map(Number);
+    const [closeHours, closeMinutes] = openingHours.close
+      .split(":")
+      .map(Number);
+
+    const isOpenNow =
+      (currentHours > openHours ||
+        (currentHours === openHours && currentMinutes >= openMinutes)) &&
+      (currentHours < closeHours ||
+        (currentHours === closeHours && currentMinutes < closeMinutes));
+
+    setIsOpen(isOpenNow);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(checkIfOpen, 1000); // Check every second
+    checkIfOpen(); // Initial check
+    // console.log("checkIfOpen: ", isOpen);
+    return () => clearInterval(interval);
+  }, []);
   return (
     <View style={styles.product}>
+      {!isOpen && (
+        <View style={styles.overlayStyle}>
+          <Text style={styles.closedTextStyle}>Closed</Text>
+        </View>
+      )}
       <Image
         style={styles.image}
         source={
@@ -99,6 +140,22 @@ const ProductComponent: React.FC<ProductType> = ({
 };
 
 const styles = StyleSheet.create({
+  overlayStyle: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "rgba(0, 0, 0, 0.7)", // Semi-transparent black
+    justifyContent: "center", // Centers content vertically
+    alignItems: "center", // Centers content horizontally
+    zIndex: 1, // Ensures the overlay is above other content
+  },
+  closedTextStyle: {
+    color: "white",
+    fontSize: 20,
+    // Add more styles if needed for the "Closed" text
+  },
   listContainer: {
     flexDirection: "row",
     paddingHorizontal: 16,
@@ -111,6 +168,7 @@ const styles = StyleSheet.create({
     height: "50%", // fix later
     backgroundColor: "red", // fix
     borderRadius: 20,
+    overflow: "hidden",
   },
   image: {
     width: "100%", // fix later
