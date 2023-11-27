@@ -25,10 +25,10 @@ const TimerComponent: FC<{ title: string; timer: number }> = ({
 
 const styles = StyleSheet.create({
   timerStyle: {
-    width: "100%",
+    width: "95%",
     padding: 12,
     borderRadius: 12,
-    marginHorizontal: 20,
+    marginHorizontal: 10,
   },
   timerTextStyle: {
     color: "white",
