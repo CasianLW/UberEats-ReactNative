@@ -2,6 +2,7 @@ import React, { FC, useEffect, useState } from "react";
 import { View, Text, Image, ScrollView, StyleSheet } from "react-native";
 //import categoriesProductsData from '@/content/categoriesProducts.json';
 import categoriesProductsData from "../content/categoriesProducts.json";
+import useOpeningStatus from "./customHooks/useOpeningStatus";
 
 interface ProductType {
   title: string;
@@ -73,33 +74,8 @@ const ProductComponent: FC<ProductType> = ({
   rating,
   openingHours,
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const isOpen = useOpeningStatus(openingHours);
 
-  const checkIfOpen = () => {
-    const currentTime = new Date();
-    const currentHours = currentTime.getHours();
-    const currentMinutes = currentTime.getMinutes();
-
-    const [openHours, openMinutes] = openingHours.open.split(":").map(Number);
-    const [closeHours, closeMinutes] = openingHours.close
-      .split(":")
-      .map(Number);
-
-    const isOpenNow =
-      (currentHours > openHours ||
-        (currentHours === openHours && currentMinutes >= openMinutes)) &&
-      (currentHours < closeHours ||
-        (currentHours === closeHours && currentMinutes < closeMinutes));
-
-    setIsOpen(isOpenNow);
-  };
-
-  useEffect(() => {
-    const interval = setInterval(checkIfOpen, 1000); // Check every second
-    checkIfOpen(); // Initial check
-    // console.log("checkIfOpen: ", isOpen);
-    return () => clearInterval(interval);
-  }, []);
   return (
     <View style={styles.product}>
       {!isOpen && (
@@ -115,7 +91,6 @@ const ProductComponent: FC<ProductType> = ({
             : require("../assets/homepage/productsList.png")
         }
       />
-
       <Text style={styles.greenMessage}>{greenMessage}</Text>
       {/* The rest of your component */}
       <View style={styles.ratingContainer}>
