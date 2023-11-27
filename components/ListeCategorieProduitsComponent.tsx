@@ -31,21 +31,21 @@ interface CategorieProps {
 
 const ListeCategoriesProduitsComponent: FC = () => {
   return (
-    <ScrollView
-      showsVerticalScrollIndicator
-      horizontal={false}
-      style={styles.listContainer}
-    >
-      <ProductListComponent
-        title={
-          categoriesProductsData.productCategories.recemmentConsultees
-            .categoryName
-        }
-        productInfo={
-          categoriesProductsData.productCategories.recemmentConsultees.products
-        }
-      />
-    </ScrollView>
+    // <ScrollView
+    //   showsVerticalScrollIndicator
+    //   horizontal={false}
+    //   style={styles.listContainer}
+    // >
+    <ProductListComponent
+      title={
+        categoriesProductsData.productCategories.recemmentConsultees
+          .categoryName
+      }
+      productInfo={
+        categoriesProductsData.productCategories.recemmentConsultees.products
+      }
+    />
+    // </ScrollView>
   );
 };
 
@@ -150,14 +150,19 @@ const styles = StyleSheet.create({
   listContainer: {
     flexDirection: "row",
     paddingHorizontal: 16,
+    width: "100%",
+    backgroundColor: "red",
   },
   productList: {
-    marginRight: 16,
+    padding: 0,
+    paddingHorizontal: 12,
+    width: "100%",
+    // marginRight: 0,
   },
   product: {
     marginBottom: 20,
-    marginRight: 16,
-    // width: "100%", // Take the full width of the container
+    // marginRight: 16,
+    width: "100%", // Take the full width of the container
     height: 200, // Take the full height of the container
     // backgroundColor: "red", // fix
     borderRadius: 20,

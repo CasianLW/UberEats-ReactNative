@@ -29,9 +29,9 @@ const HomepageComponent: FC = () => {
 
         <Text>Contenu de la page</Text>
         <View style={styles.contentGrid}>
-          <View style={styles.filterColumn}>
+          {/* <View style={styles.filterColumn}>
             <Text>filtres</Text>
-          </View>
+          </View> */}
           <View style={styles.productsColumn}>
             <ListeCategoriesProduitsComponent />
           </View>
@@ -63,6 +63,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#e2e2e2", // gray color
   },
   productsColumn: {
-    flex: 9,
+    flex: 12,
+    width: "100%",
+
+    // flex: 9,
   },
 });
