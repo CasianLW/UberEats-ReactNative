@@ -178,11 +178,13 @@ const styles = StyleSheet.create({
     borderRadius: 25,
   },
   title: {
+    color: "black",
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 14,
   },
   ratingContainer: {
+    color: "black",
     flexDirection: "row",
     alignItems: "center",
     marginTop: 4,
@@ -206,9 +208,11 @@ const styles = StyleSheet.create({
     height: 16,
   },
   deliveryText: {
+    color: "black",
     fontSize: 12,
   },
   ratingText: {
+    color: "black",
     fontSize: 12,
   },
 });
