@@ -1,12 +1,20 @@
-import React, { FC, useState } from "react";
+import React, { FC, useRef, useState } from "react";
 import { View, Text, ScrollView, StyleSheet } from "react-native";
 import CategoriesSectionComponent from "../components/CategoriesSectionComponent";
 import OffersSectionComponent from "../components/OffersSectionComponent";
 import ListeCategoriesProduitsComponent from "../components/ListeCategorieProduitsComponent";
 import NavComponent from "../components/NavComponent";
 import DishesListComponent from "../components/DishesListComponent";
+import TimerComponent from "../components/TimerComponent";
+import useTimer from "../components/customHooks/useTimer";
+import useTimerRef from "../components/customHooks/useTimerRef";
 
 const HomepageComponent: FC = () => {
+  const remainingTime = useTimer(500);
+
+  const timerRef = useRef(0); // Initialize ref
+  useTimerRef(30, timerRef);
+
   const [cartItemCount, setCartItemCount] = useState(0);
   const addItemToCart = () => {
     setCartItemCount(cartItemCount + 1);
@@ -20,14 +28,23 @@ const HomepageComponent: FC = () => {
         <NavComponent cartItemCount={cartItemCount} />
 
         <CategoriesSectionComponent />
+        <TimerComponent
+          timer={remainingTime}
+          title={"Votre offre expire en:"}
+        />
+
         <DishesListComponent
           addToCart={addItemToCart}
           removeFromCart={removeItemFromCart}
           cartItemCount={cartItemCount}
         />
+        <TimerComponent
+          timer={timerRef.current}
+          title={"Livraison offerte! Depechez-vous:"}
+        />
         <OffersSectionComponent />
 
-        <Text>Contenu de la page</Text>
+        {/* <Text>Contenu de la page</Text> */}
         <View style={styles.contentGrid}>
           {/* <View style={styles.filterColumn}>
             <Text>filtres</Text>
