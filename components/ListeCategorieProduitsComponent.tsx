@@ -155,9 +155,10 @@ const styles = StyleSheet.create({
     marginRight: 16,
   },
   product: {
+    marginBottom: 20,
     marginRight: 16,
     // width: "100%", // Take the full width of the container
-    height: "50%", // Take the full height of the container
+    height: 200, // Take the full height of the container
     // backgroundColor: "red", // fix
     borderRadius: 20,
     overflow: "hidden",
