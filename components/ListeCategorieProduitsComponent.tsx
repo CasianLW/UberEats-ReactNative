@@ -1,5 +1,12 @@
-import React, { FC, useEffect, useState } from "react";
-import { View, Text, Image, ScrollView, StyleSheet } from "react-native";
+import React, { FC } from "react";
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+  StyleSheet,
+  ImageBackground,
+} from "react-native";
 //import categoriesProductsData from '@/content/categoriesProducts.json';
 import categoriesProductsData from "../content/categoriesProducts.json";
 import useOpeningStatus from "./customHooks/useOpeningStatus";
@@ -78,6 +85,15 @@ const ProductComponent: FC<ProductType> = ({
 
   return (
     <View style={styles.product}>
+      {/* <ImageBackground
+      source={{
+        uri:
+          image ??
+          "https://cn-geo1.uber.com/image-proc/resize/eats/format=webp/width=550/height=440/quality=70/srcb64=aHR0cHM6Ly9kdXl0NGg5bmZuajUwLmNsb3VkZnJvbnQubmV0L3Jlc2l6ZWQvODQwMWZmZDQwMjk3MjIxMjdmM2NlZTNjYjg3NjExYmEtdzU1MC1mNi5qcGc=",
+      }}
+      style={styles.product}
+      resizeMode="cover" // This will ensure the image covers the full width
+    > */}
       {!isOpen && (
         <View style={styles.overlayStyle}>
           <Text style={styles.closedTextStyle}>Closed</Text>
@@ -92,7 +108,6 @@ const ProductComponent: FC<ProductType> = ({
         }
       />
       <Text style={styles.greenMessage}>{greenMessage}</Text>
-      {/* The rest of your component */}
       <View style={styles.ratingContainer}>
         <Text style={styles.title}>{title}</Text>
         <View style={styles.ratingBadge}>
@@ -110,6 +125,7 @@ const ProductComponent: FC<ProductType> = ({
           • Frais de Livraison : {fraisDeLivraison}€
         </Text>
       </View>
+      {/* </ImageBackground> */}
     </View>
   );
 };
@@ -140,14 +156,17 @@ const styles = StyleSheet.create({
   },
   product: {
     marginRight: 16,
-    height: "50%", // fix later
-    backgroundColor: "red", // fix
+    // width: "100%", // Take the full width of the container
+    height: "50%", // Take the full height of the container
+    // backgroundColor: "red", // fix
     borderRadius: 20,
     overflow: "hidden",
   },
   image: {
+    position: "absolute",
+    zIndex: -10,
     width: "100%", // fix later
-    height: 100, // fix later
+    height: "100%", // fix later
     justifyContent: "center",
     alignItems: "center",
   },
@@ -172,6 +191,7 @@ const styles = StyleSheet.create({
     backgroundColor: "grey", // fix
     borderRadius: 50,
     padding: 4,
+    marginBottom: 8,
     //width: 'fit-content',
     textAlign: "center",
     fontSize: 12,
