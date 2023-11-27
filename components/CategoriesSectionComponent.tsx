@@ -19,6 +19,10 @@ const CategoriesSectionComponent: FC = () => {
         name={"Courses"}
         image={"https://d4p17acsd5wyj.cloudfront.net/shortcuts/alcohol.png"}
       />
+      <CategorieComponent
+        name={"Rapide"}
+        image={"https://d4p17acsd5wyj.cloudfront.net/shortcuts/alcohol.png"}
+      />
       {/* ... other categories */}
     </ScrollView>
   );
