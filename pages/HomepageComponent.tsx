@@ -1,5 +1,5 @@
 import React, { FC, useRef, useState } from "react";
-import { View, Text, ScrollView, StyleSheet } from "react-native";
+import { View, Text, ScrollView, StyleSheet, Button } from "react-native";
 import CategoriesSectionComponent from "../components/CategoriesSectionComponent";
 import OffersSectionComponent from "../components/OffersSectionComponent";
 import ListeCategoriesProduitsComponent from "../components/ListeCategorieProduitsComponent";
@@ -8,8 +8,13 @@ import DishesListComponent from "../components/DishesListComponent";
 import TimerComponent from "../components/TimerComponent";
 import useTimer from "../components/customHooks/useTimer";
 import useTimerRef from "../components/customHooks/useTimerRef";
+import { HomeScreenNavigationProp } from "../App";
 
-const HomepageComponent: FC = () => {
+type HomepageComponentProps = {
+  navigation: HomeScreenNavigationProp;
+};
+
+const HomepageComponent: FC<HomepageComponentProps> = ({ navigation }) => {
   const remainingTime = useTimer(500);
 
   const timerRef = useRef(0); // Initialize ref
@@ -31,6 +36,12 @@ const HomepageComponent: FC = () => {
         <TimerComponent
           timer={remainingTime}
           title={"Votre offre expire en:"}
+        />
+
+        <Button
+          color={"black"}
+          title="Register"
+          onPress={() => navigation.navigate("Register")}
         />
 
         <DishesListComponent
