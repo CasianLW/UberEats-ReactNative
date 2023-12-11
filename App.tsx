@@ -16,6 +16,7 @@ import {
   useColorScheme,
   View,
 } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
 
 import {
   Colors,
@@ -24,18 +25,58 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from "react-native/Libraries/NewAppScreen";
-import LoginComponent from "./components/loginComponent";
+import LoginComponent from "./components/LoginComponent";
 import HomepageComponent from "./pages/HomepageComponent";
+import {
+  createNativeStackNavigator,
+  NativeStackNavigationProp,
+} from "@react-navigation/native-stack";
+import RegisterPage from "./pages/RegisterPage";
+
+type RootStackParamList = {
+  Home: undefined; // No parameters expected for the Home route
+  Register: undefined;
+};
+
+export type HomeScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  "Home"
+>;
+
+export type RegisterScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  "Register"
+>;
+
+// function HomeScreen() {
+//   return (
+//     <View style={styles.container}>
+//       <HomepageComponent />
+//     </View>
+//   );
+// }
+// function RegisterScreen() {
+//   return (
+//     <View style={styles.container}>
+//       <RegisterPage />
+//     </View>
+//   );
+// }
+const Stack = createNativeStackNavigator();
 
 function App(): JSX.Element {
   return (
-    // <SafeAreaView>
-    <View style={styles.container}>
-      <HomepageComponent />
-    </View>
-    // </SafeAreaView>
-    //<LoginComponent />
-    /*
+    <NavigationContainer>
+      {
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={HomepageComponent} />
+          <Stack.Screen name="Register" component={RegisterPage} />
+        </Stack.Navigator>
+        // <SafeAreaView>
+
+        // </SafeAreaView>
+        //<LoginComponent />
+        /*
    <SafeAreaView style={backgroundStyle}>
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
@@ -67,6 +108,8 @@ function App(): JSX.Element {
       </ScrollView>
     </SafeAreaView>
     */
+      }
+    </NavigationContainer>
   );
 }
 
